@@ -2,26 +2,25 @@
   "name": "professional-calculator",
   "version": "1.1.0",
   "description": "Advanced calculator with custom delimiters and validation",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
     "test": "jest --coverage --verbose",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
-  "dependencies": {
-    "jest": "^29.6.1"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "nodemon": "^3.0.0",
     "eslint": "^8.55.0",
+    "jest": "^29.6.1",
+    "nodemon": "^3.0.0",
     "prettier": "^3.0.0"
   },
   "keywords": [
-    "calculator", 
-    "nodejs", 
-    "TDD", 
+    "calculator",
+    "nodejs",
+    "TDD",
     "professional"
   ],
   "author": "Yogesh",
