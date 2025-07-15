@@ -6,21 +6,16 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "test": "jest --coverage --verbose",
-    "lint": "eslint .",
-    "format": "prettier --write ."
+    "test": "jest --coverage"
   },
-  "dependencies": {},
   "devDependencies": {
-    "eslint": "^8.55.0",
     "jest": "^29.6.1",
-    "nodemon": "^3.0.0",
-    "prettier": "^3.0.0"
+    "nodemon": "^3.0.0"
   },
   "keywords": [
     "calculator",
     "nodejs",
-    "TDD",
+    "math",
     "professional"
   ],
   "author": "Yogesh",
