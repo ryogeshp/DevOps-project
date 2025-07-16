@@ -1,7 +1,7 @@
 {
-  "name": "professional-calculator",
-  "version": "1.1.0",
-  "description": "Advanced calculator with custom delimiters and validation",
+  "name": "scientific-calculator",
+  "version": "1.0.0",
+  "description": "Professional scientific calculator with BODMAS support",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
@@ -14,9 +14,9 @@
   },
   "keywords": [
     "calculator",
-    "nodejs",
-    "math",
-    "professional"
+    "scientific",
+    "BODMAS",
+    "nodejs"
   ],
   "author": "Yogesh",
   "license": "MIT",
