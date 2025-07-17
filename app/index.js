@@ -321,7 +321,6 @@ function sendCalculatorUI(res) {
           
           const form = document.createElement('form');
           form.method = 'POST';
-          form.style.display = 'none';
           
           const input = document.createElement('input');
           input.type = 'hidden';
@@ -335,15 +334,20 @@ function sendCalculatorUI(res) {
         
         // Handle keyboard input
         display.addEventListener('keyup', (e) => {
-          if (e.key === 'Enter') calculate();
+          if (e.key === 'Enter') {
+            calculate();
+          }
         });
         
         // Allow only valid characters
-        display.addEventListener('input', () => {
+        display.addEventListener('input', (e) => {
           display.value = display.value.replace(/[^0-9+\-*\/^.()]/g, '');
         });
         
-        display.focus();
+        // Focus the input field when page loads
+        window.onload = function() {
+          display.focus();
+        };
       </script>
     </body>
     </html>
@@ -352,5 +356,5 @@ function sendCalculatorUI(res) {
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`Scientific Calculator running at http://localhost:${PORT}`);
+  console.log(`Calculator running at http://localhost:${PORT}`);
 });
