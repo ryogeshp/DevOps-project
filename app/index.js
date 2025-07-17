@@ -250,7 +250,7 @@ function sendCalculatorUI(res) {
     <body>
       <div class="calculator">
         <header>
-          <h1>Professional Scientific Calculator</h1>
+          <h1>Scientific Calculator</h1>
         </header>
         
         <div class="display">
