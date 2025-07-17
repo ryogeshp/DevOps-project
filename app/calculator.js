@@ -9,7 +9,6 @@ class Calculator {
       throw new Error('Invalid characters in expression');
     }
 
-    // Evaluate the expression safely
     try {
       // Replace ^ with ** for exponentiation
       const sanitized = expression.replace(/\^/g, '**');
