@@ -32,7 +32,7 @@ function sendCalculatorUI(res, currentExpression = '', result = '', isError = fa
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title> Professional Calculator </title>
+      <title>Professional Calculator</title>
       <style>
         * {
           box-sizing: border-box;
@@ -55,6 +55,14 @@ function sendCalculatorUI(res, currentExpression = '', result = '', isError = fa
           width: 100%;
           max-width: 400px;
           overflow: hidden;
+        }
+        .calculator-header {
+          background: #2c3e50;
+          color: white;
+          padding: 15px;
+          text-align: center;
+          font-size: 24px;
+          font-weight: bold;
         }
         .display {
           padding: 20px;
@@ -115,7 +123,7 @@ function sendCalculatorUI(res, currentExpression = '', result = '', isError = fa
         .equals {
           background: #2ecc71;
           color: white;
-          grid-column: span 2;
+          grid-column: span 4;
         }
         .equals:hover {
           background: #27ae60;
@@ -152,6 +160,10 @@ function sendCalculatorUI(res, currentExpression = '', result = '', isError = fa
     </head>
     <body>
       <div class="calculator">
+        <div class="calculator-header">
+          Professional Calculator
+        </div>
+        
         <div class="display">
           <input type="text" id="expression" value="${currentExpression}" placeholder="Enter expression" autocomplete="off">
           <div id="result">${result ? (isError ? result : `= ${result}`) : ''}</div>
