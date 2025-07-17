@@ -32,7 +32,7 @@ function sendCalculatorUI(res, currentExpression = '', result = '', isError = fa
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Calculator</title>
+      <title>Professional Calculator</title>
       <style>
         * {
           box-sizing: border-box;
@@ -40,8 +40,8 @@ function sendCalculatorUI(res, currentExpression = '', result = '', isError = fa
           padding: 0;
         }
         body {
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+          font-family: Arial, sans-serif;
+          background: #f5f5f5;
           min-height: 100vh;
           display: flex;
           justify-content: center;
@@ -49,22 +49,12 @@ function sendCalculatorUI(res, currentExpression = '', result = '', isError = fa
           padding: 20px;
         }
         .calculator {
-          background: rgba(255, 255, 255, 0.95);
-          border-radius: 20px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+          background: white;
+          border-radius: 10px;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
           width: 100%;
-          max-width: 500px;
+          max-width: 400px;
           overflow: hidden;
-        }
-        header {
-          background: #2c3e50;
-          color: white;
-          padding: 20px;
-          text-align: center;
-        }
-        h1 {
-          font-size: 24px;
-          font-weight: 600;
         }
         .display {
           padding: 20px;
@@ -78,15 +68,20 @@ function sendCalculatorUI(res, currentExpression = '', result = '', isError = fa
           font-size: 24px;
           text-align: right;
           padding: 10px 5px;
-          color: #2c3e50;
+          color: #333;
           font-weight: bold;
           outline: none;
+          margin-bottom: 10px;
         }
-        .result {
-          font-size: 18px;
-          color: ${isError ? '#e74c3c' : '#2ecc71'};
-          min-height: 25px;
+        #result {
+          width: 100%;
+          border: none;
+          background: transparent;
+          font-size: 20px;
+          text-align: right;
           padding: 5px;
+          color: ${isError ? '#e74c3c' : '#2ecc71'};
+          min-height: 30px;
           word-wrap: break-word;
         }
         .keypad {
@@ -99,59 +94,67 @@ function sendCalculatorUI(res, currentExpression = '', result = '', isError = fa
           border: none;
           padding: 15px;
           font-size: 18px;
-          border-radius: 10px;
+          border-radius: 5px;
           cursor: pointer;
-          background: white;
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          transition: all 0.2s ease;
-          font-weight: 500;
+          background: #f8f9fa;
+          transition: all 0.2s;
         }
         button:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+          background: #e9ecef;
         }
         button:active {
-          transform: translateY(1px);
-        }
-        .number {
-          background: #f8f9fa;
+          transform: scale(0.98);
         }
         .operator {
           background: #3498db;
           color: white;
+        }
+        .operator:hover {
+          background: #2980b9;
         }
         .equals {
           background: #2ecc71;
           color: white;
           grid-column: span 2;
         }
+        .equals:hover {
+          background: #27ae60;
+        }
         .clear {
           background: #e74c3c;
           color: white;
+        }
+        .clear:hover {
+          background: #c0392b;
         }
         .paren {
           background: #f39c12;
           color: white;
         }
+        .paren:hover {
+          background: #e67e22;
+        }
         .exponent {
           background: #9b59b6;
           color: white;
+        }
+        .exponent:hover {
+          background: #8e44ad;
         }
         .negative {
           background: #34495e;
           color: white;
         }
+        .negative:hover {
+          background: #2c3e50;
+        }
       </style>
     </head>
     <body>
       <div class="calculator">
-        <header>
-          <h1>Professional Calculator</h1>
-        </header>
-        
         <div class="display">
           <input type="text" id="expression" value="${currentExpression}" placeholder="Enter expression" autocomplete="off">
-          <div class="result" id="result">${result ? (isError ? result : `= ${result}`) : ''}</div>
+          <div id="result">${result ? (isError ? result : `= ${result}`) : ''}</div>
         </div>
         
         <div class="keypad">
@@ -160,24 +163,24 @@ function sendCalculatorUI(res, currentExpression = '', result = '', isError = fa
           <button class="paren" onclick="appendToDisplay(')')">)</button>
           <button class="operator" onclick="appendToDisplay('/')">/</button>
           
-          <button class="number" onclick="appendToDisplay('7')">7</button>
-          <button class="number" onclick="appendToDisplay('8')">8</button>
-          <button class="number" onclick="appendToDisplay('9')">9</button>
+          <button onclick="appendToDisplay('7')">7</button>
+          <button onclick="appendToDisplay('8')">8</button>
+          <button onclick="appendToDisplay('9')">9</button>
           <button class="operator" onclick="appendToDisplay('*')">×</button>
           
-          <button class="number" onclick="appendToDisplay('4')">4</button>
-          <button class="number" onclick="appendToDisplay('5')">5</button>
-          <button class="number" onclick="appendToDisplay('6')">6</button>
+          <button onclick="appendToDisplay('4')">4</button>
+          <button onclick="appendToDisplay('5')">5</button>
+          <button onclick="appendToDisplay('6')">6</button>
           <button class="operator" onclick="appendToDisplay('-')">-</button>
           
-          <button class="number" onclick="appendToDisplay('1')">1</button>
-          <button class="number" onclick="appendToDisplay('2')">2</button>
-          <button class="number" onclick="appendToDisplay('3')">3</button>
+          <button onclick="appendToDisplay('1')">1</button>
+          <button onclick="appendToDisplay('2')">2</button>
+          <button onclick="appendToDisplay('3')">3</button>
           <button class="operator" onclick="appendToDisplay('+')">+</button>
           
           <button class="negative" onclick="appendToDisplay('-')">(-)</button>
-          <button class="number" onclick="appendToDisplay('0')">0</button>
-          <button class="number" onclick="appendToDisplay('.')">.</button>
+          <button onclick="appendToDisplay('0')">0</button>
+          <button onclick="appendToDisplay('.')">.</button>
           <button class="exponent" onclick="appendToDisplay('^')">^</button>
           
           <button class="equals" onclick="calculate()">=</button>
@@ -206,7 +209,6 @@ function sendCalculatorUI(res, currentExpression = '', result = '', isError = fa
           
           const form = document.createElement('form');
           form.method = 'POST';
-          form.action = '/';
           
           const input = document.createElement('input');
           input.type = 'hidden';
@@ -219,15 +221,11 @@ function sendCalculatorUI(res, currentExpression = '', result = '', isError = fa
         }
         
         // Handle keyboard input
-        display.addEventListener('keyup', (e) => {
+        display.addEventListener('keydown', function(e) {
           if (e.key === 'Enter') {
+            e.preventDefault();
             calculate();
           }
-        });
-        
-        // Allow only valid characters
-        display.addEventListener('input', (e) => {
-          display.value = display.value.replace(/[^0-9+\-*\/^.()]/g, '');
         });
         
         // Focus the input field when page loads
