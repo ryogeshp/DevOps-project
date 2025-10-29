@@ -1,7 +1,7 @@
 {
-  "name": "scientific-calculator",
+  "name": "cientific-calculator",
   "version": "1.0.0",
-  "description": "Professional scientific calculator with BODMAS support",
+  "description": "Professional Scientific Calculator With BODMAS Support",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
